@@ -64,7 +64,7 @@ $(DV_PATTERNS): verify-% : ./verilog/dv/%
 	docker run -v ${TARGET_PATH}:${TARGET_PATH} -v ${PDK_ROOT}:${PDK_ROOT} \
                 -v ${CARAVEL_ROOT}:${CARAVEL_ROOT} \
                 -e TARGET_PATH=${TARGET_PATH} -e PDK_ROOT=${PDK_ROOT} \
-                -e CARAVEL_ROOT=${CARAVEL_ROOT} \
+                -e CARAVEL_ROOT=${CARAVEL_ROOT} -e PDK=sky130A \
                 -u $(id -u $$USER):$(id -g $$USER) efabless/dv_setup:latest \
                 sh -c $(VERIFY_COMMAND)
 				
